@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild":"cd client && npm run build "
+    "heroku-postbuild":"nodemon index.js && cd client && npm run build "
 
   },
   "author": "",
