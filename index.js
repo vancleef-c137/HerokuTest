@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+var path = require('path');
 require ('dotenv').config()
 //middleware
 app.use(cors());
@@ -11,6 +12,9 @@ app.use(express.json()); //req.body
 
 
 //create a todo
+
+
+// if prodcution use front
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.resolve(__dirname, "./client/build")));
 }
