@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const pool = require("./db");
 var path = require('path');
+const { Pool } = require('pg');
 require ('dotenv').config()
 //middleware
 app.use(cors());
@@ -12,7 +13,17 @@ app.use(express.json()); //req.body
 
 
 //create a todo
+// connect to DB 
 
+
+
+
+const db = new Pool({
+  connectionString: process.env.DATABASE_URI,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 // if prodcution use front
 if(process.env.NODE_ENV==='production'){
@@ -26,6 +37,7 @@ app.post("/todos", async(req,res) =>{
         const { description } = req.body;
         const newTodo = await pool.query(
             "INSERT INTO todo (description) VALUES($1) RETURNING *",
+            //"INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES($1, '3') RETURNING *"
          [description]
          );
          res.json(newTodo.rows[0]);
