@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "script": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
 },
   "author": "",
