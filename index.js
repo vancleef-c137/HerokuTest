@@ -53,7 +53,7 @@ app.post("/todos", async(req,res) =>{
 
 app.get("/todos", async(req,res)=>{
     try {
-        const allTodos = await pool.query("SELECT * FROM todo");
+        const allTodos = await pool.query("SELECT * FROM salesforce.todos__c");
         res.json(allTodos.rows);
     } catch (error) {
         console.error(error.message);
