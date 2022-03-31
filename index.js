@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-
+require ('dotenv').config()
 //middleware
 app.use(cors());
 app.use(express.json()); //req.body
@@ -11,6 +11,9 @@ app.use(express.json()); //req.body
 
 
 //create a todo
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static(path.resolve(__dirname, "./client/build")));
+}
 
 app.post("/todos", async(req,res) =>{
     //await
