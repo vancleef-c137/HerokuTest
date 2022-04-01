@@ -31,6 +31,16 @@ const db = new Pool({
 // }
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
+
+
+//welcome
+app.get('/', (req, res) => {
+    res.send('<h1>Hello Salesforce Devs from Express</h1>');
+  });
+
+
+
+
 app.post("/todos", async(req,res) =>{
     //await
     //awaitoooo
