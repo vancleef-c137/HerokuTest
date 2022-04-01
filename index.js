@@ -1,13 +1,14 @@
 const express = require("express");
+var path = require("path");
 const app = express();
 const cors = require("cors");
 //const pool = require("./db");
-var path = require('path');
+
 const { Pool } = require('pg');
 require ('dotenv').config()
 //middleware
-app.use(cors());
-app.use(express.json()); //req.body
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+//req.body
 
 //ROUTES//
 
@@ -29,7 +30,6 @@ const db = new Pool({
 // if(process.env.NODE_ENV==='production'){
 //     app.use(express.static(path.resolve(__dirname, "./client/build")));
 // }
-app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 
 
