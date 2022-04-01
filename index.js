@@ -57,7 +57,7 @@ app.post("/todos", async(req,res) =>{
     try {
         const { description } = req.body;
         const newTodo = await pool.query(
-            "INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES ($1,'69')",
+            "INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES ($1,'7848')",
             //"INSERT INTO todo (description) VALUES($1) RETURNING *",
             //"INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES($1, '3') RETURNING *"
 
