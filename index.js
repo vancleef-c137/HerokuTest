@@ -3,13 +3,8 @@ var path = require("path");
 const app = express();
 const cors = require("cors");
 //const pool = require("./db");
-const db = new Pool({
-    connectionString: process.env.DATABASE_URI,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
-//const { Pool } = require('pg');
+
+const { Pool } = require('pg');
 require ('dotenv').config()
 //middleware
 app.use(express.static(path.resolve(__dirname, "./client/build")));
@@ -24,7 +19,12 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 
 
-
+const db = new Pool({
+  connectionString: process.env.DATABASE_URI,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 // if prodcution use front
 // if(process.env.NODE_ENV==='production'){
@@ -37,21 +37,6 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.get('/', (req, res) => {
     res.send('<h1>Hello Salesforce Devs from Express</h1>');
   });
-
-
-
-  app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
 
 
 
