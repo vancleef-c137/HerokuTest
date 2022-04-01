@@ -31,7 +31,7 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 //   }
 // });
 
-
+app.set('view engine', 'ejs')
 
 //welcome
 app.get('/', (req, res) => {
