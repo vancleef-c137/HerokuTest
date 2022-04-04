@@ -45,6 +45,7 @@ const ListTodos = () => {
           <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>external Id</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -58,7 +59,8 @@ const ListTodos = () => {
           {todos.map(todo => (
             <tr key={todo.todo_id}>
               <td>{todo.name}</td>
-              <td>{todo.description__c}</td>        
+              <td>{todo.description__c}</td>    
+              <td>{todo.externalid__c}</td>    
               <td>
                 <EditTodo todo={todo} />
               </td>
