@@ -56,7 +56,7 @@ const ListTodos = () => {
           </tr> */}
           {todos.map(todo => (
             <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
+              <td>{todo.description__c}</td>
               <td>
                 <EditTodo todo={todo} />
               </td>
