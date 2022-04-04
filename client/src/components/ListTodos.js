@@ -43,6 +43,7 @@ const ListTodos = () => {
       <table className="table mt-5 text-center">
         <thead>
           <tr>
+            <th>Name</th>
             <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -56,6 +57,7 @@ const ListTodos = () => {
           </tr> */}
           {todos.map(todo => (
             <tr key={todo.todo_id}>
+              <td>{todo.description__c}</td>
               <td>{todo.name}</td>
               <td>
                 <EditTodo todo={todo} />
