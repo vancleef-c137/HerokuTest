@@ -57,12 +57,7 @@ app.post("/todos", async(req,res) =>{
     try {
         const { description } = req.body;
         const newTodo = await pool.query(
-            "INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES ($1,'79848')",
-            //"INSERT INTO todo (description) VALUES($1) RETURNING *",
-            //"INSERT INTO salesforce.todos__c(description__c, externalid__c) VALUES($1, '3') RETURNING *"
-
-        
-            
+            "INSERT INTO salesforce.todos__c(description__c, externalid__c, name) VALUES ($1,'79848', 'query')",
          [description]
          );
          res.json(newTodo.rows[0]);
@@ -124,7 +119,7 @@ app.put("/todos/:id", async(req,res)=>{
 app.delete("/todos/:id", async(req,res)=>{
     try {
         const {id} = req.params;
-        const deleteTodo = await pool.query("DELETE FROM salesforce.todos__c WHERE todo_id =$1", [id]
+        const deleteTodo = await pool.query("DELETE FROM salesforce.todos__c WHERE id =$1", [id]
 );
 res.json("Todo was Deleted!");
     } catch (error) {
